@@ -53,4 +53,22 @@
 例子：
 ![](https://github.com/hmzbox/Study-notes/blob/master/Markdown/images/markdown.jpg)
 
+## 7.文字引用
+>第一层
+>>第二层
+>>>第三层
+>> 这还是第三层
 
+>换行 就可以跳出去
+
+---
+## 8. 代码
+```
+    public class helloword
+    {
+        public statc void main(String [] args)
+        {
+            system.out.println("hello world");
+        }
+    }
+```
