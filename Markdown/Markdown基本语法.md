@@ -1,4 +1,8 @@
 # Markedown用法笔记
+**Markdown Preview Enhanced**是完善预览功能的*插件*
+
+**Maridown pdf**将.md文件转换成其他格式
+
 ## 1. 标题
 
 可使用1到6个"#"可表示1-　6级标题
@@ -54,6 +58,16 @@
 ![](https://github.com/hmzbox/Study-notes/blob/master/Markdown/images/markdown.jpg)
 
 ## 7.文字引用
+\>第一层
+
+\>>第二层
+
+\>>>第三层
+
+\>> 这还是第三层
+
+\>换行 就可以跳出去
+
 >第一层
 >>第二层
 >>>第三层
@@ -74,7 +88,9 @@
         }
     }
 ```
-***问题：不显示代码块行号***
+
+***问题：为什么不显示代码块行号***
+
 ---
 ## 9.表格
 表头头1\|表头头2\|表头头3
@@ -94,3 +110,11 @@
 ----------|居中     |
 居左      |居中     |居右边
 
+---
+10.emoji
+
+:simle:
+:smilley:
+:smirk:
+:worried:
+:expressionless:
