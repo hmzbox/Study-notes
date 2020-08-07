@@ -112,21 +112,12 @@
 
 ---
 ## 10.表情（emoji）
-
-:smile:\:smile:
-
-:smiley:\:smiley:
-
-:smirk:\:smiley:
-
-:worried:\:smiley:
-
-:expressionless:\:smiley:
+    :smile::smiley::smirk::worried::expressionless:
+:smile:　:smiley:　:smirk:　:worried:　:expressionless:
 
 ---
 ## 11.流程图
-```mermaid
-flowchat
+``` flow
 st=>start: 开始
 e=>end: 结束
 op=>operation: 操作
