@@ -50,6 +50,7 @@
 ## 6.插入图片
 \! \[pic] \( url)
 
-例子：![]()
+例子：
+![](https://github.com/hmzbox/Study-notes/blob/master/Markdown/images/markdown.jpg)
 
 
