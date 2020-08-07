@@ -29,7 +29,7 @@
 ## 4.超链接
 \[百度\]\(http://www.baidu.com\)
 
-例如：[百度](http://www.baidu.com)
+例：[百度](http://www.baidu.com)
 
 ---
 ## 5.列表
@@ -55,9 +55,9 @@
 
 ---
 ## 6.插入图片
-\! \[pic] \( url)
+\! \[pic\]\( url\)
 
-例子：
+\!\[\]\(https://github.com/hmzbox/Study-notes/blob/master/Markdown/images/markdown.jpg\)
 ![](https://github.com/hmzbox/Study-notes/blob/master/Markdown/images/markdown.jpg)
 
 ## 7.文字引用
