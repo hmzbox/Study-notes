@@ -111,10 +111,29 @@
 居左      |居中     |居右边
 
 ---
-10.emoji
+## 10.表情（emoji）
 
-:simle:
-:smilley:
-:smirk:
-:worried:
-:expressionless:
+:smile:\:smile:
+
+:smiley:\:smiley:
+
+:smirk:\:smiley:
+
+:worried:\:smiley:
+
+:expressionless:\:smiley:
+
+---
+## 11.流程图
+```mermaid
+flowchat
+st=>start: 开始
+e=>end: 结束
+op=>operation: 操作
+sub1=>subroutine: 子程序
+cond=>condition: Yes or No?
+io=>inputoutput: 输入/输出
+st->op->cond
+cond(yes)->io->e
+cond(no)->sub1(right)->op
+```
