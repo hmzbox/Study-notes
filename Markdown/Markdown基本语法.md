@@ -6,6 +6,8 @@
 **空格**：切换全角，直接输入space
 
 **换行**：连续两下回车
+
+**\`\`\`**:　　表示代码块
 ## 1. 标题
 
 可使用1到6个"#"可表示1-　6级标题
@@ -128,3 +130,28 @@
 + 减法运算，符号：-，如：\$x-y=z\$　　 　　　　　　$x-y=z$
 + 乘法运算，符号：\times，如：\$x \times y=z\$　　　$x \times y=z$
 + 点乘运算，符号：\cdot，如：\$x \cdot y=z\$　　　　$x \cdot y=z$
+
+## 12矩阵
+
+$$
+\left[
+ \begin{matrix}
+   a & b & c & d & e\\
+   f & g & h & i & j \\
+   k & l & m & n & o \\
+   p & q & r & s & t
+  \end{matrix} 
+\right]
+$$
+```
+$$
+\left[
+ \begin{matrix}
+   a & b & c & d & e\\
+   f & g & h & i & j \\
+   k & l & m & n & o \\
+   p & q & r & s & t
+  \end{matrix} 
+\right]
+$$
+```
