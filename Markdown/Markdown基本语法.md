@@ -119,3 +119,12 @@
 :smile:　:smiley:　:smirk:　:worried:　:expressionless:
 
 ---
+## 11 数学公式
+* 行内公式：将公式插入到本行内 \$xyz\$ 　　　　$xyz$
+* 独行公式：将公式插入到新的一行内，并且居中 \$\$xyz\$\$ 　　　$$xyz$$
+- 上标符号，符号：^，如：\$x\^4\$　　　　　　　　　 $x^4$
+- 下标符号，符号：_，如：\$x_1\$ 　　　　　　　　　$x_1$
++ 加法运算，符号：+，如：\$x+y=z\$　　　　　　　　$x+y=z$
++ 减法运算，符号：-，如：\$x-y=z\$　　 　　　　　　$x-y=z$
++ 乘法运算，符号：\times，如：\$x \times y=z\$　　　$x \times y=z$
++ 点乘运算，符号：\cdot，如：\$x \cdot y=z\$　　　　$x \cdot y=z$
