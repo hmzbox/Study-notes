@@ -134,13 +134,15 @@
 + 根号运算，符号：\sqrt,如：\$ \sqrt{1+2+3}\$　　　　　　$\sqrt{1+2+3}$
 + 大于等于运算，符号：\geq，如：$x+y \geq z$
 + 小于等于运算，符号：\leq，如：$x+y \leq z$
+---
++ 向右推出，符号：\Rightarrow,如：$\Rightarrow$
 + 省略号，符号：\cdots，如：$\cdots$
 + 空，符号：\varnothing，如：P={$\varnothing$}
 + 属于，符号：\in ,如：$a\in b$
 + 不属于，符号：\notin ,如：$a\notin b$
 + 并，符号：\cup ,如：$ x \cup y $
 + 交，符号：\cap ,如：$ x \cap y $
-
+---
 ## 12矩阵
 
 $$
