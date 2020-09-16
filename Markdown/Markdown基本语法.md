@@ -136,12 +136,43 @@
 + 小于等于运算，符号：\leq，如：$x+y \leq z$
 ---
 + 向右推出，符号：\Rightarrow,如：$\Rightarrow$
++ 上下除法显示，符号：\frac,如：$\frac {2ac}{b^2}$
 + 省略号，符号：\cdots，如：$\cdots$
 + 空，符号：\varnothing，如：P={$\varnothing$}
 + 属于，符号：\in ,如：$a\in b$
 + 不属于，符号：\notin ,如：$a\notin b$
 + 并，符号：\cup ,如：$ x \cup y $
 + 交，符号：\cap ,如：$ x \cap y $
+---
+, 符号：,如：
++ 矢量, 符号：\vec,如：$\vec{a}$
++ 积分, 符号：\int_0^1 x^2{\rm d}x , 如：$\int_0^1x^2{\rm d}x $
++ 极限, 符号：\lim_{n\rightarrow+\infty}\frac{1}{n(n+1)}, 如：$\lim_{n\rightarrow+\infty}\frac{1}{n(n+1)}$
+
++ 累加, 符号: \sum_1^ n\frac{1}{x^2} ,如：$\sum_1^n\frac{1}{x^2}$
++ 累乘, 符号：\prod_{i=0}^n,如 $\prod_{i=0}^n\frac{1}{x^2}$
+---
+**希腊字母**
++ $\infty$  \infty
++ $\alpha$  \alpha
++ $\beta$   \beta
++ $\gamma$  \gamma
++ $\Gamma$  \Gamma
++ $\delta$  \delta
++ $\theta$  \theta
++ $\varepsilon$ \varepsilon
++ $\lambda$ \lambda
++ $\mu$   \mu
++ $\sigma$  \sigma
++ $\pi$  \pi
++ $\varphi$ \varphi
++ $\Phi$  \Phi
++ $\chi$  \chi
++ $\omega$  \omega
++ $\Omega$  \Omega
+
+
+
 ---
 ## 12矩阵
 
@@ -167,3 +198,7 @@ $$
 \right]
 $$
 ```
+
+## 13字体颜色
+$\color{red}红字$ \color{red}红字
+$\color{blue}蓝字$ \color{red}蓝字
