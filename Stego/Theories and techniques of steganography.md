@@ -212,3 +212,5 @@ Sallee将MB隐写框架应用于JPEG图像，提出了基于广义Cauchy模型�
 
 之后，考虑到MB1隐写将增大图像8×8块间的不连续性，即分块效应，Phil Sallee只在至多一半的非0系数上进行MB1隐写，然后对剩下的非0系数值进行调整，以减小分块效应，从而提出MB2隐写。
 源码地址（matlab）：http://www.pudn.com/Download/item/id/1748692.html
+
+### 3.4基于调整修改方式的隐写
