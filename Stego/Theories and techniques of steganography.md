@@ -172,7 +172,7 @@ $\color{red}OutGuess缺点：$预留补偿区域的分布恢复方法显著降�
 源码地址（C++）：https://github.com/crorvick/outguess
 
 ---
-### 3.3基于统计模型的方法
+### 3.3基于统计模型的方法（Model-based，MB）
 **因为**基于预留补偿区域的分布恢复方法显著降低了嵌入效率，实际也更严重影响了二阶及以上阶的统计特性。
 
 **所以**P.Salle提出了**基于模型（Model-based，MB）的隐写**，不会引起嵌入效率下降的问题，甚至还有提高。
@@ -211,6 +211,34 @@ Sallee将MB隐写框架应用于JPEG图像，提出了基于广义Cauchy模型�
 5) 以4)中确定的顺序将系数偏移、3)中计算得到的偏移概率传至非自适应算术编码器。编码得到秘密信息。
 
 之后，考虑到MB1隐写将增大图像8×8块间的不连续性，即分块效应，Phil Sallee只在至多一半的非0系数上进行MB1隐写，然后对剩下的非0系数值进行调整，以减小分块效应，从而提出MB2隐写。
+
 源码地址（matlab）：http://www.pudn.com/Download/item/id/1748692.html
 
-### 3.4基于调整修改方式的隐写
+---
+### 3.4基于调整修改方式的隐写(F3/F4/F5)
+#### F3隐写
+论文（2-F5-A steganographic algorithm High capacity despite better steganalysis(2001,IH,CR1118)
+为了克服Jsteg隐写不能抵抗卡方分析的缺陷，F3隐写对JSteg隐写进行了改进，具体嵌入策略如下：
+**嵌入过程：**
+1. 信息嵌入时，若JPEG系数的LSB与要嵌入的秘密信息比特**相同**，**则不做改动**；**否则**，JPEG系数的**绝对值减1**；
+2. 秘密信息嵌入在非0的JPEG系数上，为0的系数不嵌入信息。当在绝对值为1的系数上嵌入比特0时，会产生新的0系数，则此次嵌入无效，在下一个系数中重新嵌入。
+
+**提取过程：**
+对F3隐写后的秘密信息提取时，只要将**非0的JPEG系数的LSB提取**。
+
+嵌入方式如图所示：
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.6 F3.png" width="600"></div>
+
+嵌入前和隐写后对比图：
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.7 F3 Histogram.png" width="400"></div>
+
+**F3隐写的特点：**
+1. 保持了JPEG系数统计分布关于0的对称性；
+2. 嵌入时，当绝对值为1的JPEG系数修改为0时，由于提取算法不能分辨这个0是消息嵌入产生的0和未使用的0，所以嵌入算法要往后寻找一个非0偶数，或寻找一个奇数并将其绝对值减1修改成非0偶数；
+3. 嵌入了更多的零，这一异常可以被利用于隐写分析。
+
+源码地址为（python）：https://github.com/uuuup/F3_stegano
+（matlab）http://www.pudn.com/Download/item/id/3190169.html
+
+---
+#### F4隐写
