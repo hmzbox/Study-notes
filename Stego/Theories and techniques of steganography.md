@@ -168,6 +168,32 @@ $\color{red}{缺点：}$对**不连续、非满负载LSBR**的分析性能**下�
 考察完毕后，最后对记录的需要修改次数再进行一轮处理$\color{red}不确保实现完全的修正$
 
 $\color{red}OutGuess缺点：$预留补偿区域的分布恢复方法显著降低了嵌入效率，实际也更严重影响了二阶及以上阶的统计特性
- 
+
+源码地址（C++）：https://github.com/crorvick/outguess
+
+---
 ### 3.3基于统计模型的方法
-**因为**基于预留补偿区域的分布恢复方法显著降低了嵌入效率，实际也更严重影响了二阶及以上阶的统计特性。**所以**P.Salle提出了**基于模型（Model-based，MB）的隐写**，不会引起嵌入效率下降的问题，甚至还有提高。
+**因为**基于预留补偿区域的分布恢复方法显著降低了嵌入效率，实际也更严重影响了二阶及以上阶的统计特性。
+
+**所以**P.Salle提出了**基于模型（Model-based，MB）的隐写**，不会引起嵌入效率下降的问题，甚至还有提高。
+
+**基本思想：**
++ 将载体信号建模为由两部分组成的随机变量**X=(Xdet, Xindet)**，其中Xdet和Xindet分别表示**确定的和非确定的部分**。隐写时，将只更改Xindet，从而保持它的分布不变，而且将确保隐密对象的非确定部分服从一定的分布模型。(在LSBR中，Xindet表示最后一个比特，非0即1)
++ 计算确定部分Xdet的概率分别，并根据假设的模型，计算非确定部分Xindet相对确定部分Xdet的条件概率。
++ 用熵解码器把均匀分布的秘密信息比特解码成服从上述条件概率分布的数据。
++ 用得到的数据替换Xindet，得到隐密对象。
+
+基于MB模型隐写的嵌入过程如图:
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.4MB Embeding.png" width="600"></div>
+提取过程如图所示：
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.5MB Extracting.png" width="600"></div>
+
+Sallee将MB隐写框架应用于JPEG图像，提出了基于广义Cauchy模型的JPEG隐写，简称为Cauchy MB隐写。由于该算法是基于MB隐写框架设计的第一个隐写算法，也被称为MB1隐写。
+
+与常用的高斯分布、广义拉普拉斯分布等相比，柯西分布能够更好地拟合AC系数直方图。尤其在柯西分布的尾部，能够对直方图进行非常好的拟合。
+柯西分布具有封闭形式的概率分布函数，这使得能够方便地计算每个直方图方条的概率。
+
+（2，2）的AC系数直方图及其拟合的柯西曲线如图所示：
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.6MB AC Cauchy.png" width="600"></div>
+
+为了保持分组内各系数值所占的比例与用柯西分布拟合所得到的一致，MB1隐写将**秘密信息、每个系数值在分组内的相对位置及其条件概率传至熵解码器**，以解码得到隐写后的每个系数值在分组内的相对位置，从而得到隐密系数。
