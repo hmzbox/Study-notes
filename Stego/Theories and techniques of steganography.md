@@ -227,10 +227,10 @@ Sallee将MB隐写框架应用于JPEG图像，提出了基于广义Cauchy模型�
 对F3隐写后的秘密信息提取时，只要将**非0的JPEG系数的LSB提取**。
 
 嵌入方式如图所示：
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.6 F3.png" width="600"></div>
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.7 F3.png" width="600"></div>
 
 嵌入前和隐写后对比图：
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.7 F3 Histogram.png" width="400"></div>
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.8 F3 Histogram.png" width="400"></div>
 
 **F3隐写的特点：**
 1. 保持了JPEG系数统计分布关于0的对称性；
