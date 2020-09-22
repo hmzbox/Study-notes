@@ -273,12 +273,12 @@ F4隐写对F3隐写进行了改进，具体嵌入过程如下：
 1. 负偶数、正奇数代表嵌入了1；用负奇数、正偶数代表嵌入0
 2. 通过减小绝对值方法进行修改产生系数0，则视为无效嵌入，在下一个系数中重新嵌入0
 
- F4嵌入方式:
- <div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.9 F4.png" width="600"></div>
- F4嵌入前and隐写后：
-  <div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.10 F4 Histogram" width="400"></div>
-  F4隐写嵌入的JAVA源码:
-    <div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.11 F4 JAVACode" width="400"></div>
+F4嵌入方式:
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.9 F4.png" width="600"></div>
+F4嵌入前and隐写后：
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.10 F4 Histogram" width="400"></div>
+F4隐写嵌入的JAVA源码:
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.11 F4 JAVACode" width="400"></div>
 
 **F4隐写的特点：**
 1.正偶数、负奇数代表0；负偶数、正奇数代表1；
@@ -305,4 +305,47 @@ $$P(Y=1)-P(Y=2)>P(Y=2)-P(Y=3)\color{red}{\rm F}4{梯度递减性}$$
 ---
 
 #### F5隐写
-（见3.3 Linear block error correcting code）
+（见3.3 Linear block error correcting code/3.4 74HammingCode） 
+
+论文（2-F5-A steganographic algorithm High capacity despite better steganalysis(2001,IH,CR1118)
+
+F4隐写使直方图特性得到了保持，但F4隐写是顺序嵌入的，这就使得LSB的修改集中在图像的某一部分，可能导致图像质量的不均匀。所以F5隐写在F4隐写基础上，引入混洗和矩阵编码技术。混洗使得隐密图像的质量比较均衡。矩阵编码将减少嵌入对系数的更改，以提高嵌入效率。
+
+**嵌入过程：**
+1. 获取嵌入域。获取载体图像，进行JPEG压缩，得到**量化**后的DCT系数；
+2. 置乱。对第一步中得到的**AC系数**进行**置乱**，**置乱的方法作为密钥（伪随机发生器）**；
+3. 对可用的AC系数计数，并根据欲嵌入的**秘密信息长度计算**得到嵌入信息所使用的**三元组**$(1，n=2^k-1, k)$;
+4. 取出置乱后的非0的AC系数及欲嵌入的比特信息，采用**矩阵编码进行嵌入**（取$\color{red}{n}$个非0的AC系数，在其LSB上嵌入$\color{red}{n-r}$比特的消息）：
+① 计算载体数据是否需要更改。若不需要，则继续下一组的嵌入，若需要，则更改相应的数据LSB；
+② 对经过更改后的数据，判断是否产生了新的值为0的系数，若有，则此次嵌入无效，取出一个新的n个非0系数(包含上次嵌入中没有改变的n-1系数的LSB和1个新系数的LSB，**此处的理解有点模糊**)，执行①；若没有，重复执行第四步，直到秘密信息全部嵌入；
+5. 逆置乱。恢复DCT系数为原来的顺序；
+6. 熵编码。按照JPEG标准无损压缩DCT量化系数，得到JPEG文件。
+
+**矩阵编码：**
+F5隐写引入矩阵编码使得**嵌入效率**得到很大的**提高**。
+
+**嵌入效率**：每个**更改**能够负载的秘密信息比特数。
+
+在通常的LSB隐写中，嵌入1比特的信息对LSB平均更改的概率使1/2，也就是说每个更改平均只能嵌入2比特的信息。而在F3隐写，F4隐写中，由于会出现无效的嵌入，所以嵌入效率会更低，矩阵编码的目的就是以最少的更改嵌入更多的秘密信息。
+
+**例：** 每次嵌入2比特信息$x_1 x_2$为，此时，嵌入2比特信息只需用载体数据的$3（2^2-1）$个LSB：$a_1，a_2，a_3$且最多改动其中的一个$a_i$即可实现2比特数据的嵌入，分四种情况来分析：
++ 若$x_1=a_1⊕a_3,x_2=a_2⊕a_3$，则不作任何改变，
++ 若$x_1≠a_1⊕a_3,x_2=a_2⊕a_3$，改动$a_1$
++ 若$x_1=a_1⊕a_3,x_2≠a_2⊕a_3$，改动$a_2$
++ 若$x_1≠a_1⊕a_3,x_2≠a_2⊕a_3$，改动$a_3$
+
+假设存在$n=2^k-1$比特码字$C$，用来嵌入$k$比特的秘密消息$M$。对于任意$C$和$M$的组合找到码字$C'$，是否存在变换$f$和一个确定的值$d$，使得$M=f(C’)$，且$C$与$C’$之间的汉明距离满足$d(C, C’)≤d$
+
+长度为$n$的码字$C$在改变其中不超过$d$个比特时嵌入k比特信息，这个问题用三元组$(d, n, k)$来表示。
+
+$(1, n=2^k-1, k)$码的**性能指标**：
+
+改变的比特的比例为：$$D(k)=\frac{1}{n+1}=\frac{1}{2^k}$$
+嵌入率为：$$R(k)=\frac{k}{n}=\frac{k}{2^k-1}$$
+嵌入效率为：$$W(k)=\frac{R(k)}{D(k)}=\frac{k}{(\frac{n}{n+1})}=\frac{2^k\times k}{2^k-1}$$
+F5隐写后，图像的DCT系数直方图特性依然得到了保持，几种用F5创建的JPEG文件的比较如下所示。
+
+<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/4.8 F5.png" width="600"></div>
+
+源码地址（java）：https://github.com/matthewgao/F5-steganography
+（matlab nsF5）http://dde.binghamton.edu/download/nsf5simulator/
