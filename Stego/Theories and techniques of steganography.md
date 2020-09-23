@@ -405,12 +405,17 @@ $F_1$是像素值2n与2n+1之间的变换，$F_{−1}$是像素值2n−1与2n之
 
 1. 把图像分成若干个像素组G
 2. 设掩码算子$M(m_1,m_2,...,m_n)$,其中$m_i$取$0，1，-1$(掩码算子可以取随机0，1但是一定要各占**50%概率**。)
-   定义$F_m$与$F_(−m)$。对于长度为n的像素值的序列$G(g_1,g_2,..,g_n)$，
-   $$F_m(G)=(F_{m_1}(g_1),⋯,F_{m_n}(g_n));$$
-   $$F_{−m}(G)=(F_{−m1}(g_1),⋯,F_{−m_n}(g_n))。$$
+   定义$F_M$与$F_{−M}$。对于长度为n的像素值的序列$G(g_1,g_2,..,g_n)$，
+   $$F_M(G)=(F_{m_1}(g_1),⋯,F_{m_n}(g_n));$$
+   $$F_{−M}(G)=(F_{−m1}(g_1),⋯,F_{−m_n}(g_n))。$$
    <div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/5.1 RSAnalysis.png" width="600"></div>
-**利用平滑函数$f(x)$和翻转函数$F_1$、$F_{-1}$对$G$分组** 
+**利用平滑函数$f(x)$和翻转函数$F_1$、$F_{-1}$、$F_0$对$G$分组** 
 <div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/5.2 RSAnalysis2.png" width="600"></div>
+
++ $R_M$为$F_1$作用下**正则组**占所有像素的比例
++ $R_{-M}$为$F_{-1}$作用下**正则组**占所有像素的比例
++ $S_M$为$F_1$作用下**奇异组**占所有像素的比例
++ $S_{-M}$为$F_{-1}$作用下**奇异组**占所有像素的比例
 
 对于一个原始不包含隐藏信息的载体来说具有下面的规律：
 $$R_M\approx R_{-M}>S_m\approx S_{-M}$$
