@@ -45,11 +45,11 @@ YUV的取值范围为：[0,255]、[负整数,正整数]、[负整数,正整数]
 U = - 0.147R- 0.289G + 0.436B　　V = 0.615R - 0.515G - 0.100B
 即：
 
-![](https://github.com/hmzbox/Study-notes/blob/master/Stego/images/YUV%20mode.png)
+![](./images/YUV%20mode.png)
 
 **YC<sub>b</sub>C<sub>r</sub>**: 为了统一YUV模型的取值范围为[0,255]
 
-![](https://github.com/hmzbox/Study-notes/blob/master/Stego/images/YCbCr.png)
+![](./images/YCbCr.png)
 
 
 **总结2.1**：YUV色彩模型来源于RGB模型，YCbCr模型来源于YUV模型，还未涉及压缩，压缩是JPEG通过YUV411或YUV422**采样**实现。YUV为分离亮度和色度，及实现黑白彩色电视兼容提出，YCbCr为改变YUV取值范围为[0,255]
@@ -62,7 +62,7 @@ U = - 0.147R- 0.289G + 0.436B　　V = 0.615R - 0.515G - 0.100B
 
 通常采用两种采样方式：YUV411和YUV422，它们所代表的意义是Y,C<sub>b</sub>和C<sub>r</sub>三个分量的数据取样比例一般是4：1：1或者4：2：2（在2x2的单元中，本应分别有4个Y，4个U，4个V值，用**12**个字节存储。经4:1:1采样处理后，每个单元中的值分别有4个Y、1个U、1个V，只用**6**个字节。
 
-![](https://github.com/hmzbox/Study-notes/blob/master/Stego/images/JPEG.png)
+![](./images/JPEG.png)
 
 1. **YC<sub>b</sub>C<sub>r</sub>格式输入**。若输入不是YC<sub>b</sub>C<sub>r</sub>格式，则转换成YC<sub>b</sub>C<sub>r</sub>;
 2. **图像切分成8×8和采样**。若H和W不是8的倍数，则需要扩充到8的倍数（Y通常是嵌入域），并对C<sub>b</sub>和C<sub>r</sub>进行YUV411或YUV422采样；（例如16×16的块，包含4个Y分块和1个C<sub>b</sub>和1个C<sub>r</sub>）
@@ -77,15 +77,15 @@ U = - 0.147R- 0.289G + 0.436B　　V = 0.615R - 0.515G - 0.100B
 * **应用**：**Jsteg**隐写软件，在JPEG量化DCT系数采用LSBR
 * **原理**：**奇小偶大**，替换最小bit位，最小位若是0（**偶数**）变1（**+1**），最小位若是1（**奇数**）变0（**-1**）
 * **缺陷**：**值对**现象出现，使得相邻像素的值接近，如：2i与2i+1趋于相等，如图：
-![](https://github.com/hmzbox/Study-notes/blob/master/Stego/images/LSBRHistogram.png)
+![](./images/LSBRHistogram.png)
 * **优势**：在JPEG量化系数-1、0、1不适用，通常最小值对是2与3、是-2与-3，**奇小偶大**可以使得1与2、-1与-2是最小值对，从分利用了分布较密的1与-1。
 #### 三元嵌入LSBM
 
 * **提出原因**：解决LSBR值对问题
-* **原理**：![](https://github.com/hmzbox/Study-notes/blob/master/Stego/images/LSBM.png)
+* **原理**：![](./images/LSBM.png)
 
 如：2=(010)<sub>2</sub>，**if** s=0，(010)<sub>2</sub>不变；**if** s=1，(010)<sub>2</sub>+1=(011)<sub>2</sub>=3 or (010)<sub>2</sub>-1=(001)<sub>2</sub>=1
-* **性能分析**：![](https://github.com/hmzbox/Study-notes/blob/master/Stego/images/LSBMHistogram.png)
+* **性能分析**：![](./images/LSBMHistogram.png)
 **总结2.3**：三元嵌入LSBM解决二元嵌入LSBR值对问题，提高安全性。
 
 ---
@@ -145,7 +145,7 @@ $\Rightarrow$(教材P20)总有一个数量的增加多余减少
 **因为**在JPEG系数中0和1经常不用，**所以**$i$从1开始，有$i=1,2,...,d-1$。
 
 
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.1t.png" width="800"></div>
+<div align=center><img src="./images/3.1t.png" width="800"></div>
 
 **Notes：**
 1. $y^x(i)=y^*(i)$
@@ -166,7 +166,7 @@ $$\color{red}{p=\int_T^\infty f(t){\rm d}t=1-\int_0^T f(t){\rm d}t}$$
   其中，$T$表示根据输入图像计算得到的$t$值（$t$服从$\chi^2分布$），若$p$接近1，则存在隐写。
 
 
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.2p.png" width="400"></div>
+<div align=center><img src="./images/3.2p.png" width="400"></div>
 
 $\color{red}{优点：}$对于**连续LSBR嵌入**的隐写非常有效，甚至可以**估计嵌入长度**
 
@@ -210,9 +210,9 @@ $\color{red}{OutGuess缺点：}$预留补偿区域的分布恢复方法显著降
 + 用得到的数据替换Xindet，得到隐密对象。
 
 基于MB模型隐写的嵌入过程如图:
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.4MB Embeding.png" width="600"></div>
+<div align=center><img src="./images/3.4MB Embeding.png" width="600"></div>
 提取过程如图所示：
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.5MB Extracting.png" width="600"></div>
+<div align=center><img src="./images/3.5MB Extracting.png" width="600"></div>
 
 Sallee将MB隐写框架应用于JPEG图像，提出了基于广义Cauchy模型的JPEG隐写，简称为Cauchy MB隐写。由于该算法是基于MB隐写框架设计的第一个隐写算法，也被称为MB1隐写。
 
@@ -220,7 +220,7 @@ Sallee将MB隐写框架应用于JPEG图像，提出了基于广义Cauchy模型�
 柯西分布具有封闭形式的概率分布函数，这使得能够方便地计算每个直方图方条的概率。
 
 （2，2）的AC系数直方图及其拟合的柯西曲线如图所示：
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.6MB AC Cauchy.png" width="500"></div>
+<div align=center><img src="./images/3.6MB AC Cauchy.png" width="500"></div>
 
 为了保持分组内各系数值所占的比例与用柯西分布拟合所得到的一致，MB1隐写将**秘密信息、每个系数值在分组内的相对位置及其条件概率传至熵解码器**，以解码得到隐写后的每个系数值在分组内的相对位置，从而得到隐密系数。
 为了避免只改变图像的一部分而引起的与未含秘密信息部分的视觉差异，用于隐写信息的系数顺序将随机确定。
@@ -253,12 +253,12 @@ Sallee将MB隐写框架应用于JPEG图像，提出了基于广义Cauchy模型�
 对F3隐写后的秘密信息提取时，只要将**非0的JPEG系数的LSB提取**。
 
 嵌入方式如图所示：
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.7 F3.png" width="600"></div>
+<div align=center><img src="./images/3.7 F3.png" width="600"></div>
 
 嵌入前和隐写后对比图：
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.8 F3 Histogram.png" width="400"></div>
+<div align=center><img src="./images/3.8 F3 Histogram.png" width="400"></div>
 
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.12 F3 Problem.png" width="400"></div>
+<div align=center><img src="./images/3.12 F3 Problem.png" width="400"></div>
 
 **F3隐写的特点：**
 1. 保持了JPEG系数统计分布关于0的对称性；
@@ -278,11 +278,11 @@ F4隐写对F3隐写进行了改进，具体嵌入过程如下：
 2. 通过减小绝对值方法进行修改产生系数0，则视为无效嵌入，在下一个系数中重新嵌入0
 
 F4嵌入方式:
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.9 F4.png" width="600"></div>
+<div align=center><img src="./images/3.9 F4.png" width="600"></div>
 F4嵌入前and隐写后：
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.10 F4 Histogram" width="400"></div>
+<div align=center><img src="./images/3.10 F4 Histogram.png" width="400"></div>
 F4隐写嵌入的JAVA源码:
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/3.11 F4 JAVACode" width="400"></div>
+<div align=center><img src="./images/3.11 F4 JAVACode.png" width="400"></div>
 
 **F4隐写的特点：**
 1.正偶数、负奇数代表0；负偶数、正奇数代表1；
@@ -349,7 +349,7 @@ $(1, n=2^k-1, k)$码的**性能指标**：
 嵌入效率为：$$W(k)=\frac{R(k)}{D(k)}=\frac{k}{(\frac{n}{n+1})}=\frac{2^k\times k}{2^k-1}$$
 F5隐写后，图像的DCT系数直方图特性依然得到了保持，几种用F5创建的JPEG文件的比较如下所示。
 
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/4.8 F5.png" width="600"></div>
+<div align=center><img src="./images/4.8 F5.png" width="600"></div>
 
 源码地址（java）：https://github.com/matthewgao/F5-steganography
 （matlab nsF5）http://dde.binghamton.edu/download/nsf5simulator/
@@ -408,9 +408,12 @@ $F_1$是像素值2n与2n+1之间的变换，$F_{−1}$是像素值2n−1与2n之
    定义$F_M$与$F_{−M}$。对于长度为n的像素值的序列$G(g_1,g_2,..,g_n)$，
    $$F_M(G)=(F_{m_1}(g_1),⋯,F_{m_n}(g_n));$$
    $$F_{−M}(G)=(F_{−m1}(g_1),⋯,F_{−m_n}(g_n))。$$
-   <div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/5.1 RSAnalysis.png" width="600"></div>
+
+<div align=center><img src="./images/5.1 RSAnalysis.png" width="600"></div>
+
 **利用平滑函数$f(x)$和翻转函数$F_1$、$F_{-1}$、$F_0$对$G$分组** 
-<div align=center><img src="https://github.com/hmzbox/Study-notes/blob/master/Stego/images/5.2 RSAnalysis2.png" width="600"></div>
+
+<div align=center><img src="./images/5.2 RSAnalysis2.png" width="600"></div>
 
 + $R_M$为$F_1$作用下**正则组**占所有像素的比例
 + $R_{-M}$为$F_{-1}$作用下**正则组**占所有像素的比例
@@ -421,10 +424,12 @@ $\color{red}{对于一个未隐藏信息的载体有下面的规律：}$(因为�
 $$即：\color{red}{R_M\approx R_{-M}>S_m\approx S_{-M}}$$
 
 $\color{red}{对于一个含密载体有下面的规律：}$
+
 + 载体进行了LSBR$\Leftrightarrow$部分像素进行了$F_1$变换；
 + 对于LSBR类型嵌入的载体做RS分析$\Leftrightarrow$$F_1$(LSBR)+$F_1$、$F_1$(LSBR)+$F_0$、$F_1$(LSBR)+$F_{-1}$**和**$F_0$(LSBR)+$F_1$、$F_0$(LSBR)+$F_0$、$F_0$(LSBR)+$F_{-1}$
 
 经过RS分析中翻转$F$后的像素可以分为三类：
+
 1. 灰度值前后**不变的**:$F_0$(LSBR)+$F_0$、$F_1$(LSBR)+$F_1$
 2. 灰度值前后**变化1**的:$F_1$(LSBR)+$F_0$、$F_0$(LSBR)+$F_1$、$F_0$(LSBR)+$F_{-1}$
 3. 灰度值前后**变化1+1**的:$F_1$(LSBR)+$F_{-1}$
@@ -434,6 +439,5 @@ $\color{red}{对于一个含密载体有下面的规律：}$
 $$即：\color{red}{R_{-M}-S_{-M}}>R_M-S_M$$
 
 （$R_{-M}$为图中最高的线缓慢向上(增加)，$S_{-M}$为图中最低的线缓慢向下(减少)）
-
 
 也就是说对于一个待检测的载体，只需要得到上述的统计量，然后通过对比这四个统计参数之间的大小关系就能够判断出载体中是否含有秘密信息。
