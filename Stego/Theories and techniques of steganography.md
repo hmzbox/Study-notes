@@ -258,7 +258,7 @@ Sallee将MB隐写框架应用于JPEG图像，提出了基于广义Cauchy模型�
 嵌入前和隐写后对比图：
 <div align=center><img src="./images/3.8 F3 Histogram.png" width="400"></div>
 
-<div align=center><img src="./images/3.12 F3 Problem.png" width="400"></div>
+<div align=center><img src="./images/3.12 F3 Problem.png" width="350"></div>
 
 **F3隐写的特点：**
 1. 保持了JPEG系数统计分布关于0的对称性；
@@ -409,7 +409,7 @@ $F_1$是像素值2n与2n+1之间的变换，$F_{−1}$是像素值2n−1与2n之
    $$F_M(G)=(F_{m_1}(g_1),⋯,F_{m_n}(g_n));$$
    $$F_{−M}(G)=(F_{−m1}(g_1),⋯,F_{−m_n}(g_n))。$$
 
-<div align=center><img src="./images/5.1 RSAnalysis.png" width="600"></div>
+<div align=center><img src="./images/5.1 RSAnalysis.png" width="400"></div>
 
 **利用平滑函数$f(x)$和翻转函数$F_1$、$F_{-1}$、$F_0$对$G$分组** 
 
