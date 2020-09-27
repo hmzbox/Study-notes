@@ -84,7 +84,7 @@ U = - 0.147R- 0.289G + 0.436B　　V = 0.615R - 0.515G - 0.100B
 * **应用**：**Jsteg**隐写软件，在JPEG量化DCT系数采用LSBR
 * **原理**：**奇小偶大**，替换最小bit位，最小位若是0（**偶数**）变1（**+1**），最小位若是1（**奇数**）变0（**-1**）
 * **缺陷**：**值对**现象出现，使得相邻像素的值接近，如：2i与2i+1趋于相等，如图：
-![](./images/LSBRHistogram.png)
+<div align=center><img src="./images/LSBRHistogram.png" width="800"></div>
 * **优势**：在JPEG量化系数-1、0、1不适用，通常最小值对是2与3、是-2与-3，**奇小偶大**可以使得1与2、-1与-2是最小值对，从分利用了分布较密的1与-1。
 #### 三元嵌入LSBM
 
@@ -92,7 +92,9 @@ U = - 0.147R- 0.289G + 0.436B　　V = 0.615R - 0.515G - 0.100B
 * **原理**：![](./images/LSBM.png)
 
 如：2=(010)<sub>2</sub>，**if** s=0，(010)<sub>2</sub>不变；**if** s=1，(010)<sub>2</sub>+1=(011)<sub>2</sub>=3 or (010)<sub>2</sub>-1=(001)<sub>2</sub>=1
-* **性能分析**：![](./images/LSBMHistogram.png)
+* **性能分析**：
+<div align=center><img src="./images/LSBMHistogram.png" width="800"></div>
+
 **总结2.3**：三元嵌入LSBM解决二元嵌入LSBR值对问题，提高安全性。
 
 ---
