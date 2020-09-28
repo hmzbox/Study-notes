@@ -543,10 +543,10 @@ LSBM-R是Mielikainen提出的基于±1分组的隐写编码，**提到**了LSBM�
 
 对载体样点值$x=(x_i,x_{i+1})$为嵌入分组，在其嵌入2bit的信息$m=(m_i,m_{i+1})$,并使修改后的样点值$y=(y_i,y{i+1})$满足：
 
-$$公式1：LSB(y_i)=m \\\\
-公式2：f(y_i,y_{i+1})=LSB(\lfloor \frac{y_i}{2}\rfloor +y_{i+1})=m_{i+1}\\\\
-公式3可简单表示公式1和公式2：\color{red}{f(y_i,y_{i+1})=(y_i+2y_{i+1})_{mod4}=m}\\\\
-其中y_i,y_{i+1},m\in Z_4$$
+$$公式1：LSB(y_i)=m$$
+$$公式2：f(y_i,y_{i+1})=LSB(\lfloor \frac{y_i}{2}\rfloor +y_{i+1})=m_{i+1}$$
+$$公式3可简单表示公式1和公式2：\color{red}{f(y_i,y_{i+1})=(y_i+2y_{i+1})_{mod4}=m}$$
+其中$y_i,y_{i+1},m\in Z_4$
 
 而且：
 $f(x_i-1,x_{i+1})\not=f(x_i+1,x_{i+1})\\\\
@@ -563,7 +563,7 @@ f(x_i,x_{i+1})\not=f(x_i,x_{i+1}+1)$
 + 8比特编码样点0和255不进行嵌入
 + 利用$n=2$个载体样点嵌入$q=2$比特信息，**负载率**$\alpha=1$
 + **平均每载体LSB被修改次数的期望**为$$d=\frac{E(k)}{n}=\frac{P(LSB(x_i)\not =)\times 1+P(LSB(x_i)=m_i)P(f(x_i,x_{i+1})\not =m_{i+1})\times 1}{2}=\frac{0.5+0.5\times0.5}{2}=0.375次/bit$$
-+ **嵌入效率**为：$e=\frac{q}{E(K)}=\frac{2}{0.375\times2}\approx2.67bit/次$，显著操过了LSBM的2bit/次。
++ **嵌入效率**为：$e=\frac{q}{E(K)}=\frac{2}{0.375\times2}\approx2.67bit/次$，显著操超过了LSBM的2bit/次。
 
 ### 7.2基于和差覆盖集的GLSBM（Generalization LSB Matching）
 **基于和差覆盖集的GLSBM**是LSBM-R的**一般形式的推广**
