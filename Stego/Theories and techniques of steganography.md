@@ -545,7 +545,7 @@ LSBM-R是Mielikainen提出的基于±1分组的隐写编码，**提到**了LSBM�
 
 $$公式1：LSB(y_i)=m$$
 $$公式2：f(y_i,y_{i+1})=LSB(\lfloor \frac{y_i}{2}\rfloor +y_{i+1})=m_{i+1}$$
-$$公式3可简单表示公式1和公式2：\color{red}{f(y_i,y_{i+1})=(y_i+2y_{i+1})_{mod4}=m}$$
+$$\color{red}{公式3可简单表示公式1和公式2：f(y_i,y_{i+1})=(y_i+2y_{i+1})_{mod4}=m}$$
 其中$y_i,y_{i+1},m\in Z_4$
 
 而且：
