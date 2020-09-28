@@ -29,7 +29,7 @@
     - [6.3.3 ±1双层嵌入](#633-1双层嵌入)
 - [第7章 基于±1的分组隐写编码](#第7章-基于1的分组隐写编码)
   - [7.1 一个特例LSBM-R(LSB matching revisited)](#71-一个特例lsbm-rlsb-matching-revisited)
-  - [7.2基于和差覆盖集的GLSBM](#72基于和差覆盖集的glsbm)
+  - [7.2基于和差覆盖集的GLSBM（Generalization LSB Matching）](#72基于和差覆盖集的glsbmgeneralization-lsb-matching)
 
 ---
 ## 第2章 图像编码与基本嵌入方法
@@ -564,7 +564,7 @@ f(x_i,x_{i+1})\not=f(x_i,x_{i+1}+1)$
 + **平均每载体LSB被修改次数的期望**为$$d=\frac{E(k)}{n}=\frac{P(LSB(x_i)\not =)\times 1+P(LSB(x_i)=m_i)P(f(x_i,x_{i+1})\not =m_{i+1})\times 1}{2}=\frac{0.5+0.5\times0.5}{2}=0.375次/bit$$
 + **嵌入效率**为：$e=\frac{q}{E(K)}=\frac{2}{0.375\times2}\approx2.67bit/次$，显著操过了LSBM的2bit/次。
 
-### 7.2基于和差覆盖集的GLSBM
+### 7.2基于和差覆盖集的GLSBM（Generalization LSB Matching）
 **基于和差覆盖集的GLSBM**是LSBM-R的**一般形式的推广**
 LSBM-R的$\color{red}{公式3}$的一般形式为：
 $$f(y)=(\sum_{i=1}^n a_iy_i)_{{\rm mod}2^q}=^{def}ay^T=m\in Z_{2^q}$$
