@@ -62,6 +62,8 @@
 \!\[\]\(https://github.com/hmzbox/Study-notes/blob/master/Markdown/images/markdown.jpg\)
 ![](https://github.com/hmzbox/Study-notes/blob/master/Markdown/images/markdown.jpg)
 
+\<div align=center>\<img src="./images/3.1Reducing_bias_and_variance.png" width="500">\</div>
+
 ## 7.文字引用
 \>第一层
 
